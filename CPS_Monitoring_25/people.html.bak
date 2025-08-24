@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NSF Award - People</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Project People</h1></header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="code_data.html">Code & Data</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+  
+	<h4>This project is estimated to start from January 1, 2026</h4>
+  
+    <h2>Principal Investigator</h2>
+    <p><strong><a href="https://bineet.cs.ua.edu/" target="_blank">Bineet Ghosh</a></strong> – Assistant Professor, Department of Computer Science, University of Alabama</p>
+    
+	<!--<h2>Collaborators</h2>
+    <ul>
+      <li>Student Research Assistants</li>
+      <li>Postdocs</li>
+      <li>External Collaborators</li>
+    </ul>-->
+  
+  </main>
+  <footer>&copy; <a href="https://bineet.cs.ua.edu/" target="_blank">Bineet Ghosh</a></footer>
+</body>
+</html>

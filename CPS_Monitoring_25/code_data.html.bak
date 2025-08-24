@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NSF Award - Code & Data</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Code & Data</h1></header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="code_data.html">Code & Data</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Repositories</h2>
+    <ul>
+      <li><a href="#">Future repositories will be listed here.</a></li>
+    </ul>
+  </main>
+  <footer>&copy; 2025 Bineet Ghosh | University of Alabama</footer>
+</body>
+</html>

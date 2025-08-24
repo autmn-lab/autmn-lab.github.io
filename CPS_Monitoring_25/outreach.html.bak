@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NSF Award - Outreach</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Outreach</h1></header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="code_data.html">Code & Data</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+  
+	<h4>This project is estimated to start from January 1, 2026</h4>
+	
+    <h2>Community Engagement</h2>
+    <p>This project includes outreach activities such as K-12 STEM workshops,
+       mentoring undergraduate students, and collaborations with industry.</p>
+  </main>
+  <footer>&copy; <a href="https://bineet.cs.ua.edu/" target="_blank">Bineet Ghosh</a></footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* style.css — Light blue background */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #eaf4fb; /* light blue background */
+  color: #333333;
+}
+
+header {
+  background: #ffffff; /* white box on blue */
+  color: #2d6eb6;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  background: #ffffff; /* white bar */
+  border-bottom: 1px solid #d6e4f2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  color: #2d6eb6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  background: #dcebf9; /* soft hover */
+  border-radius: 6px;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff; /* content card */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+  color: #2d6eb6; /* consistent accent */
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ffffff;
+  color: #555555;
+  margin-top: 2rem;
+  border-top: 1px solid #d6e4f2;
+}
