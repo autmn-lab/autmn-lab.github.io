@@ -23,15 +23,17 @@
     <section class="section-box">
       <h1>Documentation & Examples</h1>
       <p>Below is a quick start example to use Posto:</p>
-      <pre><code>import posto
+      <pre><code>from System import *
 
 # Example usage
-data = posto.load("example_input.txt")
-result = posto.process(data)
-posto.save(result, "output.txt")
+s = System("/home/path/to/logs/logFile.lg", "equation", "home/path/to/model/modelFile.json")
+s.generateLog(init, timestamp, prob, dtlog)
+s.checkSafety()
 </code></pre>
 
-      <p>More examples and detailed documentation can be found on the GitHub wiki.</p>
+      <p>More examples and detailed documentation can be found 
+    <a href="https://https://github.com/autmn-lab/posto_restructured/blob/main/docs/User_Guide.md" target="_blank" rel="noopener noreferrer">here</a>.
+  </p>
     </section>
   </main>
 
