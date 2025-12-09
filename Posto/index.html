@@ -22,12 +22,19 @@
   <main>
     <section class="section-box">
         <h1>About the Tool</h1>
+		
+		
         <p>
           The rapid advancement of autonomy in modern systems has led to a surge in model complexity, making safety verification using traditional tools increasingly difficult. As systems increasingly rely on components such as deep neural networks (DNN), existing model-based verification and monitoring techniques struggle to scale.
         </p>  
         <p>
           <strong>Posto</strong> To address this challenge, we introduce Posto, a statistical monitoring tool for safety verification of complex autonomous systems, including those driven by DNN. Unlike traditional monitoring tools that depend on formal system models, Posto only requires the system’s input–output behavior (I/O Execution model) and the log, which may be noisy and incomplete. Using this information, Posto monitors the system against given safety properties, generating a concrete counterexample when unsafe behavior is observed or providing a probabilistic safety guarantee with a user-specified confidence level otherwise.
         </p>
+		
+		<p style="text-align:center;">
+			  <img src="files/Overview.png" alt="Posto Architecture Diagram" style="max-width:60%; border-radius:6px;">
+		</p>
+		
         <p>
           <strong>Evaluation and Usage</strong> We provide easy-to-use scripts and comprehensive documentation that allow users to reproduce our experiments, monitor their own systems using logs, and extend the tool for their own applications. 
         </p>
