@@ -23,70 +23,108 @@
     <section class="section-box">
         <h1>About the Tool</h1>
         <p>
-          As <strong>Cyber-Physical Systems (CPS)</strong> become increasingly autonomous, their underlying models grow more complex,
-          combining nonlinear, stochastic, and neural-network-driven dynamics.
-          Traditional formal verification methods such as model checking struggle to scale or generalize to such systems.
+          The rapid advancement of autonomy in modern systems has led to a surge in model complexity, making safety verification using traditional tools increasingly difficult. As systems increasingly rely on components such as deep neural networks (DNN), existing model-based verification and monitoring techniques struggle to scale.
         </p>  
         <p>
-          <strong>Offline monitoring</strong> provides a practical and lightweight alternative: it verifies safety properties by analyzing
-          the system’s generated or observed trajectories. However, existing monitoring techniques, especially those based on reachability,
-          often fail when faced with the complexity of modern CPS or DNN-based components.
+          <strong>Posto</strong> To address this challenge, we introduce Posto, a statistical monitoring tool for safety verification of complex autonomous systems, including those driven by DNN. Unlike traditional monitoring tools that depend on formal system models, Posto only requires the system’s input–output behavior (I/O Execution model) and the log, which may be noisy and incomplete. Using this information, Posto monitors the system against given safety properties, generating a concrete counterexample when unsafe behavior is observed or providing a probabilistic safety guarantee with a user-specified confidence level otherwise.
         </p>
         <p>
-          <strong>Posto</strong> introduces a statistical monitoring framework that combines <em>simulation</em>,
-          <em>uncertainty quantification</em>, and <em>probabilistic safety verification</em> to deliver
-          high-confidence safety guarantees for both analytical and learning-enabled CPS.
+          <strong>Evaluation and Usage</strong> We provide easy-to-use scripts and comprehensive documentation that allow users to reproduce our experiments, monitor their own systems using logs, and extend the tool for their own applications. 
         </p>
-        <hr>
-        <h2>What is Posto?</h2>
-        <p>
-          <strong>Posto</strong> is a <em>Python-based tool</em> for probabilistic safety monitoring and verification.
-          It enables the modeling, simulation, and verification of systems under uncertainty through three complementary modes:
-        </p>
-        <ul>
-          <li><strong>Equation Mode:</strong> Uses mathematical models defined in <code>.json</code> files, specifying state variables, constants, equations, and safety constraints.</li>
-          <li><strong>ANN Mode:</strong> Integrates trained neural network models (<code>.h5</code> files) to emulate system behavior.</li>
-          <li><strong>Dev Mode (Model.py):</strong> Lets users define their own dynamics in Python — ideal for testing new formulations, stochastic effects, or hybrid systems.</li>
-        </ul> 
-        <hr>
-        <h2>Core Functionality</h2>
-        <p>
-          At the center of Posto lies the <code>System</code> class, which drives the entire workflow:
-        </p>
-        <h3>Model Integration</h3>
-        <p>
-          Loads equation-based, ANN-based, or custom user models through a unified interface.
-        </p>
-        <h3>Behavior Generation</h3>
-        <p>
-          The <code>behaviour()</code> function generates and visualizes randomized trajectories from a given initial state set.
-          By sampling multiple initial points and simulating their evolution across all state dimensions, Posto helps users
-          intuitively explore the system’s dynamics, detect patterns, and identify regions of instability or convergence
-          before verification begins. The resulting plots are automatically saved as high-resolution 2D and 3D visualizations.
-        </p>
-        <h3>Probabilistic Log Generation</h3>
-        <p>
-          The <code>generateLog()</code> command produces uncertainty-aware log files (<code>.lg</code>), which record the
-          probabilistic evolution of the system’s state over time. Each log entry encodes a bounded interval for every state
-          variable — representing uncertainty from noise, randomness, or parameter variation.
-        </p>
-        <h3>Safety Verification</h3>
-        <p>
-          The <code>checkSafety()</code> command evaluates trajectories and logs against user-defined constraints using the
-          <strong>Jeffreys Bayes Factor (JBF)</strong> approach, providing statistical <strong>SAFE</strong> or
-          <strong>UNSAFE</strong> classifications with confidence scores.
-        </p>
-        <h3>Visualization</h3>
-        <p>
-          Posto automatically generates interpretive plots that highlight safe versus unsafe regions, probabilistic log intervals,
-          and trajectory evolution — offering both diagnostic and presentation-ready visuals.
-        </p>
-        <hr>
-        <h2>Custom Model (Dev Mode)</h2>
-        <p>
-          Posto supports <strong>developer-defined models</strong> for advanced research use. Users can directly implement their own
-          <code>getNextState()</code> function to describe the system’s dynamics, bypassing the need for equation or ANN files.
-        </p>
+		
+		<h2> Based On </h2>
+			<p>
+				Posto is based on the paper
+				<strong>
+				  Probabilistic Safety Verification of Autonomous Systems: A Statistical Approach for Monitoring
+				</strong>.
+			  </p>
+
+			  <p>
+				<em>Authors:</em>
+				<a href="https://bineet.cs.ua.edu/" target="_blank" rel="noopener noreferrer">Bineet Ghosh</a>,
+				<a href="https://lipn.univ-paris13.fr/~andre/" target="_blank" rel="noopener noreferrer">Étienne André</a><br>
+
+				<em>In:</em> International Conference on Formal Techniques for Distributed Objects, Components, and Systems (FORTE), 2025.
+			  </p>
+
+			  <p>
+				<a href="https://bineet.cs.ua.edu/files/FORTE25.pdf" target="_blank" rel="noopener noreferrer">
+				  📄 Read the paper (PDF)
+				</a>
+				&nbsp;|&nbsp;
+				<a href="https://bineet.cs.ua.edu/files/FORTE25Bib.txt" target="_blank" rel="noopener noreferrer">
+				  📑 BibTeX citation
+				</a>
+			  </p>
+			  
+			<p style="text-align:center;">
+			  <img src="files/GA25.png" alt="GA25" style="max-width:50%; border-radius:6px;">
+			</p>
+
+       
+        <h2>Posto Architecture and Functionalities</h2>
+
+			<!-- Architecture Image -->
+			<p style="text-align:center;">
+			  <img src="files/Arch.jpg" alt="Posto Architecture Diagram" style="max-width:100%; border-radius:6px;">
+			</p>
+			
+			<p>
+			Each block represents a core architectural component. Inputs are shown as hollow rectangles on the left, internal components as solid gray rectangles, and outputs as purple arrows on the right. Interactions between components are indicated by solid blue arrows.
+			</p>
+			
+			<!-- Functionalities -->
+			<h3>Safety Verification</h3>
+			<p>
+			Posto verifies the safety of complex autonomous systems—including those with DNN components—using noisy and incomplete logs, providing high probabilistic guarantees. It reconstructs valid system trajectories to check safety, returning a concrete counterexample if any trajectory violates the specifications.
+			</p>
+
+			<pre><code>python3 posto.py checkSafety --log=logs/model1.lg \
+			  --mode=equation --model_path=models/model1.json</code></pre>
+			  
+			<p style="text-align:center;">
+			  <img src="files/Verification.png" alt="Verification" style="max-width:35%; border-radius:6px;">
+			</p>
+
+
+			<h3>Log Generation</h3>
+			<p>
+			  Posto can also generate synthetic logs by sampling random system trajectories and adding user-defined noise and missing samples, allowing users to test robustness under different uncertainty conditions. It provides visualizations of these logs to help users intuitively understand system behavior.
+			</p>
+
+			<pre><code>python3 posto.py generateLog --log=logs/model1.lg \
+			  --init="[[ -2.0, 2.0 ], [ -1.5, 1.5 ], [ -1.5, 1.5 ]]" \
+			  --timestamp=3000 --mode=equation \
+			  --model_path=models/model1.json \
+			  --prob=7 --dtlog=0.05</code></pre>
+			  
+			<p style="text-align:center;">
+			  <img src="files/LogEg.png" alt="GA25" style="max-width:32%; border-radius:6px;">
+			</p>
+
+			<h3>Behavior Generation</h3>
+			<p>
+			  Posto can generate and visualize random system behaviors under uncertainty, offering diagnostic insights into how the system evolves from different initial conditions. Though separate from the safety verification pipeline, this helps users explore possible executions and assess the system’s robustness.
+			</p>
+
+			<pre><code>python3 posto.py behavior --log=logs/model1.lg
+			--init="[[-1.667370, -1.467370],
+			[0.531417, 0.731417], [-1.678000, -1.478000]]"
+			--timestamp=1000 --mode=equation
+			--model_path=models/model1.json</code></pre>
+			
+			<p style="text-align:center;">
+			  <img src="files/Beh.png" alt="Beh.png" style="max-width:35%; border-radius:6px;">
+			</p>
+
+			<p>
+			  A complete list of commands and configuration options is available in the
+			<strong><a href="files/Posto-manual.pdf" target="_blank" rel="noopener noreferrer">Posto Manual</a></strong>.
+
+			</p>
+
+
       </section>
   </main>
 
