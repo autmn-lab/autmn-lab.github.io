@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posto Tool - Documentation & Examples</title>
+  <title>Posto Tool - Documentation & Example</title>
   <link rel="stylesheet" href="style.css">
 	<style>
     .section-box h2 { font-size: 1.6em; margin-top: 1.6em; }
@@ -24,7 +24,7 @@
       <ul>
         <li><a href="index.html">About the Tool</a></li>
         <li><a href="code.html">Code / Download</a></li>
-        <li><a href="docs.html" class="active">Documentation & Examples</a></li>
+        <li><a href="docs.html" class="active">Documentation & Example</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -32,7 +32,35 @@
 
   <main>
     <section class="section-box">
-      <h1>Documentation & Examples</h1>
+      <h1>Documentation & Example</h1>
+	  
+	          <p>Posto can be used either from the command line or directly from Python. The example below demonstrates how to use the Jet model to get started with Posto. We first generate a log from the Jet model and then use Posto to check its safety. We subsequently use the same model as a running example to illustrate the key functionalities of Posto, including how models are encoded, how safety verification is performed, how the resulting outputs can be interpreted, and how these functionalities are implemented within Posto.</p>
+      <pre><code>from System import *
+
+# Example usage: Jet model
+s = System("logs/Jet.lg", "equation", "models/Jet.json")
+s.generateLog([[0.8, 1.0], [0.8, 1.0]], T=2000, prob=5, dtlog=0.04)
+s.checkSafety()
+</code></pre>
+
+      <p>More detailed documentation can be found 
+        <a href="files/Posto-manual.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+      </p>
+
+      <p>
+				<strong>Recreating Results</strong> 
+
+				Once the tool is downloaded and set up, the experimental results can be reproduced using the
+				<a href="https://github.com/autmn-lab/posto_tool/blob/master/artEval.py"
+					target="_blank" rel="noopener noreferrer">script</a>
+				provided in our GitHub repository, with detailed usage instructions available
+				<a href="https://autmn-lab.github.io/Posto/files/Posto-recreation.pdf"
+					target="_blank" rel="noopener noreferrer">here</a>.
+
+			</p>
+	  
+	  
+	  
 		            <h2>Illustrative Example</h2>
       <h3>Jet Model</h3>
       <p>The Jet model is a Moore-Greitzer model of a jet engine compressor which has a stabilizing feedback control, operating in the no-stall mode. It describes the shifted mass flow rate through the compressor (x) and the shifted pressure rise (y) across it. The discretized dynamics are given as follows:</p>
@@ -200,30 +228,8 @@ $$</p>
         <img src="files/img/Unsafe/SafeUnsafeTrajs_state1.png" width="30%">
       </p>
 
-      <p>All log records are safe but a valid trajectory shown as the red dashed curve drops below $-0.10$ in $x$ near step 150 and is returned as a counterexample. The blue curve is a safe valid trajectory.</p>        <p>Posto can be used either from the command line or directly from Python. The quick start below uses Python to generate a log for the Jet model and check its safety, with the same settings as the illustrative example that follows:</p>
-      <pre><code>from System import *
-
-# Example usage: Jet model
-s = System("logs/Jet.lg", "equation", "models/Jet.json")
-s.generateLog([[0.8, 1.0], [0.8, 1.0]], T=2000, prob=5, dtlog=0.04)
-s.checkSafety()
-</code></pre>
-
-      <p>More detailed documentation can be found 
-        <a href="files/Posto-manual.pdf" target="_blank" rel="noopener noreferrer">here</a>.
-      </p>
-
-      <p>
-				<strong>Recreating Results</strong> 
-
-				Once the tool is downloaded and set up, the experimental results can be reproduced using the
-				<a href="https://github.com/autmn-lab/posto_tool/blob/master/artEval.py"
-					target="_blank" rel="noopener noreferrer">script</a>
-				provided in our GitHub repository, with detailed usage instructions available
-				<a href="https://autmn-lab.github.io/Posto/files/Posto-recreation.pdf"
-					target="_blank" rel="noopener noreferrer">here</a>.
-
-			</p>
+	  <p>All log records are safe but a valid trajectory shown as the red dashed curve drops below $-0.10$ in $x$ near step 150 and is returned as a counterexample. The blue curve is a safe valid trajectory.</p>
+      
 
     </section>
   </main>
